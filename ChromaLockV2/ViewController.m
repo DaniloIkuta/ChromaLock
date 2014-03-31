@@ -8,6 +8,7 @@
 
 #import "ViewController.h"
 #import "MyScene.h"
+#import "MainMenuViewController.h"
 
 @implementation ViewController
 
@@ -46,6 +47,11 @@
 {
     [super didReceiveMemoryWarning];
     // Release any cached data, images, etc that aren't in use.
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    MainMenuViewController *vc = [segue sourceViewController];
+    self.stage = vc.selectedStage;
 }
 
 @end
