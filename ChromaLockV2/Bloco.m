@@ -127,6 +127,7 @@
     
     self.typeIdentifier = index;
     self.on = FALSE;
+    self.LightHierarchy = 0;
     return self;
 }
 

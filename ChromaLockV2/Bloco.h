@@ -21,6 +21,7 @@
 @property int typeIdentifier;
 @property SKSpriteNode *image;
 @property NSArray *imageFrames;
+@property int LightHierarchy;
 
 
 -(id)initWithNumber:(int)index;

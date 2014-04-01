@@ -39,6 +39,7 @@
 		BB3F7A4F18E9E060004351F9 /* Start On.png in Resources */ = {isa = PBXBuildFile; fileRef = BB3F7A4118E9E060004351F9 /* Start On.png */; };
 		BB3F7A5218E9E243004351F9 /* MainMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB3F7A5118E9E243004351F9 /* MainMenuViewController.m */; };
 		BB3F7A5518E9EBB6004351F9 /* Bloco.m in Sources */ = {isa = PBXBuildFile; fileRef = BB3F7A5418E9EBB6004351F9 /* Bloco.m */; };
+		BB9BC25A18EB5BF700FFB9E7 /* StageRef.m in Sources */ = {isa = PBXBuildFile; fileRef = BB9BC25918EB5BF700FFB9E7 /* StageRef.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,6 +93,8 @@
 		BB3F7A5118E9E243004351F9 /* MainMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainMenuViewController.m; sourceTree = "<group>"; };
 		BB3F7A5318E9EBB6004351F9 /* Bloco.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bloco.h; sourceTree = "<group>"; };
 		BB3F7A5418E9EBB6004351F9 /* Bloco.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Bloco.m; sourceTree = "<group>"; };
+		BB9BC25818EB5BF700FFB9E7 /* StageRef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StageRef.h; sourceTree = "<group>"; };
+		BB9BC25918EB5BF700FFB9E7 /* StageRef.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StageRef.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -154,6 +157,8 @@
 		BB15995718E60B3F007F7DEA /* ChromaLockV2 */ = {
 			isa = PBXGroup;
 			children = (
+				BB9BC25818EB5BF700FFB9E7 /* StageRef.h */,
+				BB9BC25918EB5BF700FFB9E7 /* StageRef.m */,
 				BB3F7A5318E9EBB6004351F9 /* Bloco.h */,
 				BB3F7A5418E9EBB6004351F9 /* Bloco.m */,
 				BB15996018E60B3F007F7DEA /* AppDelegate.h */,
@@ -343,6 +348,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BB15996B18E60B3F007F7DEA /* MyScene.m in Sources */,
+				BB9BC25A18EB5BF700FFB9E7 /* StageRef.m in Sources */,
 				BB15996818E60B3F007F7DEA /* ViewController.m in Sources */,
 				BB15996218E60B3F007F7DEA /* AppDelegate.m in Sources */,
 				BB3F7A5518E9EBB6004351F9 /* Bloco.m in Sources */,

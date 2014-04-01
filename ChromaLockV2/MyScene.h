@@ -25,10 +25,12 @@
 
 @property NSMutableArray *gridX;
 @property NSMutableArray *imageGridX;
+@property int winLight;
+@property int winGrid;
 
 
 -(id)initWithSize:(CGSize)size withStage:(int)stageNumber;
 
--(void)generateStage;
+-(void)generateStage:(int) stageNumber;
 
 @end
