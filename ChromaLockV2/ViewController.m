@@ -8,7 +8,6 @@
 
 #import "ViewController.h"
 #import "MyScene.h"
-#import "MainMenuViewController.h"
 
 @implementation ViewController
 
@@ -22,7 +21,7 @@
     skView.showsNodeCount = YES;
     
     // Create and configure the scene.
-    SKScene * scene = [MyScene sceneWithSize:skView.bounds.size];
+    SKScene * scene = [[MyScene alloc]initWithSize:skView.bounds.size withStage:self.stage];
     scene.scaleMode = SKSceneScaleModeAspectFill;
     
     // Present the scene.
@@ -47,11 +46,6 @@
 {
     [super didReceiveMemoryWarning];
     // Release any cached data, images, etc that aren't in use.
-}
-
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-    MainMenuViewController *vc = [segue sourceViewController];
-    self.stage = vc.selectedStage;
 }
 
 @end

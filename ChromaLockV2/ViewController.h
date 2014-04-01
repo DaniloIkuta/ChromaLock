@@ -11,6 +11,6 @@
 
 @interface ViewController : UIViewController
 
-@property int stage;
+@property(nonatomic) int stage;
 
 @end

@@ -7,6 +7,7 @@
 //
 
 #import "MainMenuViewController.h"
+#import "ViewController.h"
 
 @interface MainMenuViewController ()
 
@@ -48,6 +49,11 @@
 - (IBAction)selectStage3:(id)sender {
     self.selectedStage = 3;
     [self performSegueWithIdentifier:@"MenuToGame" sender:self];
+}
+
+- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    ViewController *vc = [segue destinationViewController];
+    vc.stage = self.selectedStage;
 }
 
 @end

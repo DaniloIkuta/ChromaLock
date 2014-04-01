@@ -10,7 +10,7 @@
 
 @interface MainMenuViewController : UIViewController
 
-@property int selectedStage;
+@property (nonatomic)int selectedStage;
 
 - (IBAction)selectStage1:(id)sender;
 - (IBAction)selectStage2:(id)sender;

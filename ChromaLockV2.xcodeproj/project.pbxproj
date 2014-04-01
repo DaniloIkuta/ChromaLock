@@ -38,6 +38,7 @@
 		BB3F7A4E18E9E060004351F9 /* VerticalSprite.png in Resources */ = {isa = PBXBuildFile; fileRef = BB3F7A4018E9E060004351F9 /* VerticalSprite.png */; };
 		BB3F7A4F18E9E060004351F9 /* Start On.png in Resources */ = {isa = PBXBuildFile; fileRef = BB3F7A4118E9E060004351F9 /* Start On.png */; };
 		BB3F7A5218E9E243004351F9 /* MainMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB3F7A5118E9E243004351F9 /* MainMenuViewController.m */; };
+		BB3F7A5518E9EBB6004351F9 /* Bloco.m in Sources */ = {isa = PBXBuildFile; fileRef = BB3F7A5418E9EBB6004351F9 /* Bloco.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -89,6 +90,8 @@
 		BB3F7A4118E9E060004351F9 /* Start On.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Start On.png"; path = "Images.xcassets/Start On.png"; sourceTree = "<group>"; };
 		BB3F7A5018E9E243004351F9 /* MainMenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainMenuViewController.h; sourceTree = "<group>"; };
 		BB3F7A5118E9E243004351F9 /* MainMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainMenuViewController.m; sourceTree = "<group>"; };
+		BB3F7A5318E9EBB6004351F9 /* Bloco.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bloco.h; sourceTree = "<group>"; };
+		BB3F7A5418E9EBB6004351F9 /* Bloco.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Bloco.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,6 +154,8 @@
 		BB15995718E60B3F007F7DEA /* ChromaLockV2 */ = {
 			isa = PBXGroup;
 			children = (
+				BB3F7A5318E9EBB6004351F9 /* Bloco.h */,
+				BB3F7A5418E9EBB6004351F9 /* Bloco.m */,
 				BB15996018E60B3F007F7DEA /* AppDelegate.h */,
 				BB15996118E60B3F007F7DEA /* AppDelegate.m */,
 				BB15996318E60B3F007F7DEA /* Main.storyboard */,
@@ -340,6 +345,7 @@
 				BB15996B18E60B3F007F7DEA /* MyScene.m in Sources */,
 				BB15996818E60B3F007F7DEA /* ViewController.m in Sources */,
 				BB15996218E60B3F007F7DEA /* AppDelegate.m in Sources */,
+				BB3F7A5518E9EBB6004351F9 /* Bloco.m in Sources */,
 				BB15995E18E60B3F007F7DEA /* main.m in Sources */,
 				BB3F7A5218E9E243004351F9 /* MainMenuViewController.m in Sources */,
 			);
