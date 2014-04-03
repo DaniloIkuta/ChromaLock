@@ -7,6 +7,7 @@
 //
 
 #import <SpriteKit/SpriteKit.h>
+#import <AVFoundation/AVFoundation.h>
 #import "ViewController.h"
 
 
@@ -20,6 +21,7 @@
 
 
 @interface MyScene : SKScene
+
 @property(nonatomic) int stage;
 
 @property (nonatomic) NSTimeInterval lastUpdateTimeInterval;
@@ -33,6 +35,8 @@
 @property NSArray *winFrames;
 @property SKSpriteNode *winBlock;
 
+@property AVAudioPlayer *moveSound;
+@property AVAudioPlayer *unlockSound;
 
 @property BOOL win;
 @property BOOL lose;
@@ -43,6 +47,7 @@
 @property UISwipeGestureRecognizer *upSwipe;
 
 @property ViewController *vc;
+
 
 -(id)initWithSize:(CGSize)size withStage:(int)stageNumber;
 

@@ -9,21 +9,25 @@
 #import "ViewController.h"
 #import "MyScene.h"
 
-@implementation ViewController
+@implementation ViewController{
+    SKView * skView;
+    MyScene * scene;
+}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 
     // Configure the view.
-    SKView * skView = (SKView *)self.view;
+    skView = (SKView *)self.view;
     skView.showsFPS = YES;
     skView.showsNodeCount = YES;
     
     // Create and configure the scene.
-    MyScene * scene = [[MyScene alloc]initWithSize:skView.bounds.size withStage:self.stage];
+    scene = [[MyScene alloc]initWithSize:skView.bounds.size withStage:self.stage];
     scene.scaleMode = SKSceneScaleModeAspectFill;
     scene.vc = self;
+    
     
     [self.view addGestureRecognizer:scene.rightSwipe];
     [self.view addGestureRecognizer:scene.leftSwipe];
@@ -32,6 +36,13 @@
     
     // Present the scene.
     [skView presentScene:scene];
+    
+}
+
+-(void)viewDidDisappear:(BOOL)animated{
+    scene = nil;
+    skView = nil;
+    
 }
 
 - (BOOL)shouldAutorotate

@@ -41,6 +41,9 @@
 		BB3F7A5518E9EBB6004351F9 /* Bloco.m in Sources */ = {isa = PBXBuildFile; fileRef = BB3F7A5418E9EBB6004351F9 /* Bloco.m */; };
 		BB9BC25A18EB5BF700FFB9E7 /* StageRef.m in Sources */ = {isa = PBXBuildFile; fileRef = BB9BC25918EB5BF700FFB9E7 /* StageRef.m */; };
 		C098C8D218ECA79F00D541FD /* Start On Red.png in Resources */ = {isa = PBXBuildFile; fileRef = C098C8D118ECA79F00D541FD /* Start On Red.png */; };
+		C0EBB69618EDF2FE00C7C026 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0EBB69518EDF2FE00C7C026 /* AVFoundation.framework */; };
+		C0EBB69918EDF46100C7C026 /* stoneDrag.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C0EBB69718EDF46100C7C026 /* stoneDrag.mp3 */; };
+		C0EBB69A18EDF46100C7C026 /* unlockPlus.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C0EBB69818EDF46100C7C026 /* unlockPlus.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,6 +100,9 @@
 		BB9BC25818EB5BF700FFB9E7 /* StageRef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StageRef.h; sourceTree = "<group>"; };
 		BB9BC25918EB5BF700FFB9E7 /* StageRef.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StageRef.m; sourceTree = "<group>"; };
 		C098C8D118ECA79F00D541FD /* Start On Red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Start On Red.png"; path = "Images.xcassets/Start On Red.png"; sourceTree = "<group>"; };
+		C0EBB69518EDF2FE00C7C026 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		C0EBB69718EDF46100C7C026 /* stoneDrag.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = stoneDrag.mp3; sourceTree = "<group>"; };
+		C0EBB69818EDF46100C7C026 /* unlockPlus.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = unlockPlus.mp3; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,6 +110,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C0EBB69618EDF2FE00C7C026 /* AVFoundation.framework in Frameworks */,
 				BB15995218E60B3F007F7DEA /* CoreGraphics.framework in Frameworks */,
 				BB15995418E60B3F007F7DEA /* UIKit.framework in Frameworks */,
 				BB15995618E60B3F007F7DEA /* SpriteKit.framework in Frameworks */,
@@ -147,6 +154,7 @@
 		BB15994E18E60B3F007F7DEA /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				C0EBB69518EDF2FE00C7C026 /* AVFoundation.framework */,
 				BB15994F18E60B3F007F7DEA /* Foundation.framework */,
 				BB15995118E60B3F007F7DEA /* CoreGraphics.framework */,
 				BB15995318E60B3F007F7DEA /* UIKit.framework */,
@@ -181,6 +189,8 @@
 		BB15995818E60B3F007F7DEA /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				C0EBB69718EDF46100C7C026 /* stoneDrag.mp3 */,
+				C0EBB69818EDF46100C7C026 /* unlockPlus.mp3 */,
 				BB15995918E60B3F007F7DEA /* ChromaLockV2-Info.plist */,
 				BB15995A18E60B3F007F7DEA /* InfoPlist.strings */,
 				BB15995D18E60B3F007F7DEA /* main.m */,
@@ -315,6 +325,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C0EBB69918EDF46100C7C026 /* stoneDrag.mp3 in Resources */,
 				BB3F7A4D18E9E060004351F9 /* VertEsqSprite.png in Resources */,
 				C098C8D218ECA79F00D541FD /* Start On Red.png in Resources */,
 				BB3F7A4318E9E060004351F9 /* ALLSprite.png in Resources */,
@@ -322,6 +333,7 @@
 				BB3F7A4218E9E060004351F9 /* BackgroundB.png in Resources */,
 				BB3F7A4818E9E060004351F9 /* EndSprite.png in Resources */,
 				BB3F7A4F18E9E060004351F9 /* Start On.png in Resources */,
+				C0EBB69A18EDF46100C7C026 /* unlockPlus.mp3 in Resources */,
 				BB3F7A4B18E9E060004351F9 /* HorizontalSprite.png in Resources */,
 				BB3F7A4E18E9E060004351F9 /* VerticalSprite.png in Resources */,
 				BB3F7A4918E9E060004351F9 /* HorBaixoSprite.png in Resources */,

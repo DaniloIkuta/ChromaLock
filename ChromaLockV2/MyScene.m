@@ -15,6 +15,7 @@
     int startRed;
     int moveNumber;
     SKLabelNode* movesRemaining;
+    //The game
 }
 
 -(id)initWithSize:(CGSize)size withStage:(int)stageNumber {
@@ -22,6 +23,13 @@
     if (self = [super initWithSize:size]) {
         /* Setup your scene here */
         self.stage = stageNumber;
+        
+        self.moveSound = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSURL alloc] initFileURLWithPath: [[NSBundle mainBundle] pathForResource:@"stoneDrag" ofType:@"mp3"] ] error:nil];
+        self.moveSound.numberOfLoops = 0;
+        
+        
+        self.unlockSound = [[AVAudioPlayer alloc] initWithContentsOfURL:[[NSURL alloc] initFileURLWithPath: [[NSBundle mainBundle] pathForResource:@"unlockPlus" ofType:@"mp3"] ] error:nil];
+        self.unlockSound.numberOfLoops = 0;
         
         
         self.background = [SKSpriteNode spriteNodeWithImageNamed:@"BackgroundB.png"];
@@ -258,6 +266,10 @@
 
 
 -(void) gestureDidMove{
+    [self.moveSound setCurrentTime:0.0];
+    [self.moveSound prepareToPlay];
+    [self.moveSound play];
+    
     moveNumber --;
     movesRemaining.text = [[NSNumber numberWithInt:moveNumber] stringValue];
     
@@ -297,7 +309,7 @@
             [temp removeLastObject];
         }
     }
-    
+
     
     if(startBlue >= 0){
         SKSpriteNode* blueBegin = [SKSpriteNode spriteNodeWithImageNamed:@"Start On.png"];
@@ -336,7 +348,7 @@
 -(void)checkWin{
     Bloco *temp = [[self.gridX objectAtIndex:3] objectAtIndex:self.winGrid];
     
-    //if(temp.right == TRUE){
+    if(temp.right == TRUE){
         if (temp.on == self.winLight){
             
             SKAction* action = [SKAction animateWithTextures:[NSArray arrayWithObjects:[self.winFrames objectAtIndex:0], [self.winFrames objectAtIndex:self.winLight], nil] timePerFrame:0];
@@ -347,16 +359,25 @@
             
             [self endGame];
         }
-        
-        else if(moveNumber == 0){
+        else
+            if(moveNumber == 0){
+                self.lose = TRUE;
+                [self endGame];
+            }
+    }
+    else
+        if(moveNumber == 0){
             self.lose = TRUE;
             [self endGame];
         }
-    //}
-}
+    }
 
 -(void)endGame{
     if(self.win == TRUE){
+        [self.unlockSound setCurrentTime:0.0];
+        [self.unlockSound prepareToPlay];
+        [self.unlockSound play];
+        
         UIAlertView *winAlert = [[UIAlertView alloc]initWithTitle:@"Complete!" message:@"You Win!!!" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles: nil];
         
         [winAlert show];
@@ -370,6 +391,8 @@
 }
 
 -(void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex{
+    [self removeAllChildren];
+    [self removeAllActions];
     [self.vc performSegueWithIdentifier:@"unwindToMenu" sender:self.vc];
 }
 
@@ -387,11 +410,13 @@
     Bloco *temp;
     if(startBlue >= 0){
         temp = [[self.gridX objectAtIndex:0] objectAtIndex:startBlue];
-        [self spreadBlueLight:temp givenHierarchy:1];
+        if(temp.left == TRUE)
+            [self spreadBlueLight:temp givenHierarchy:1];
     }
     if(startRed >= 0){
         temp = [[self.gridX objectAtIndex:0] objectAtIndex:startRed];
-        [self spreadRedLight:temp givenHierarchy:1];
+        if(temp.left == TRUE)
+            [self spreadRedLight:temp givenHierarchy:1];
     }
     temp = nil;
 }
@@ -591,6 +616,16 @@
 
 -(void)updateWithTimeSinceLastUpdate:(CFTimeInterval)timeSinceLastUpdate{
     
+}
+
+
+-(void)dealloc{
+    if(self != nil){
+        [self setPaused:YES];
+        
+        [self removeAllActions];
+        [self removeAllChildren];
+    }
 }
 
 @end
