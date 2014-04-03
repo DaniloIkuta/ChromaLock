@@ -24,38 +24,43 @@
         self.background = [SKSpriteNode spriteNodeWithImageNamed:@"BackgroundB.png"];
         self.background.ZPosition = -15;
         self.background.position = CGPointMake(self.size.width/2, self.size.height/2);
+        self.background.xScale = SCALE;
+        self.background.yScale = SCALE;
         [self addChild:self.background];
         
         self.gridX = [[NSMutableArray alloc] init];
         self.imageGridX = [[NSMutableArray alloc] init];
         
+        //
+        [self generateStage:self.stage];
+        
+        
+        
+        
         for(int i = 0; i < 4; i++){
-            [self.gridX addObject: [[NSMutableArray alloc] init]];
             for(int j = 0; j < 4; j++){
-                int random = arc4random() % 10 + 1;
-                Bloco *x;
                 
-                if(i == 2
-                   && j == 3)
-                    x = [[Bloco alloc]initWithNumber:0];
+                Bloco *x = [[self.gridX objectAtIndex:i] objectAtIndex:j];
                 
-                else{
-                    x = [[Bloco alloc]initWithNumber:random];
+                if(x.typeIdentifier != 0){
                     SKAction *action = [SKAction animateWithTextures:x.imageFrames timePerFrame:0];
-                    [x.image runAction:[SKAction repeatActionForever:action]];
+                    [x.image runAction:[SKAction repeatAction:action count:1]];
+                    
+                    x.BlockX = i;
+                    x.BlockY = j;
+                    
+                    [x.image setSize:CGSizeMake(XDist * SCALE, YDist * SCALE)];
+                    
+                    [x.image setPosition:CGPointMake(X0+((i-1)*(SCALE * XDist)+((i-1)*2)), Y0+((3-j)*(SCALE * YDist)+((3-j)*2)))];
+                    
+                    [self addChild:x.image];
+                    
                 }
                 
-                x.BlockX = i;
-                x.BlockY = j;
                 
-                [x.image setSize:CGSizeMake(XDist, YDist)];
-                
-                [x.image setPosition:CGPointMake(X0+((i-1)*XDist+((i-1)*2)), Y0+((j-1)*YDist+((j-1)*2)))];
-                
-                [self addChild:x.image];
-                [[self.gridX objectAtIndex:i] insertObject:x atIndex:j];
             }
         }
+        //
         
         Bloco *teste = [[self.gridX objectAtIndex:0] objectAtIndex:0];
         
@@ -69,17 +74,178 @@
             }
         
         [self checkWin];
+        [self showLights];
+        
+        self.rightSwipe = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(rightSwipeRecognized:)];
+        [self.rightSwipe setDirection:UISwipeGestureRecognizerDirectionRight];
+        
+        self.leftSwipe = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(leftSwipeRecognized:)];
+        [self.leftSwipe setDirection:UISwipeGestureRecognizerDirectionLeft];
+        
+        self.upSwipe = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(upSwipeRecognized:)];
+        [self.upSwipe setDirection:UISwipeGestureRecognizerDirectionUp];
+        
+        self.downSwipe = [[UISwipeGestureRecognizer alloc]initWithTarget:self action:@selector(downSwipeRecognized:)];
+        [self.downSwipe setDirection:UISwipeGestureRecognizerDirectionDown];
+        
+        SKAction *action = [SKAction animateWithTextures:[NSArray arrayWithObjects:[self.winFrames objectAtIndex:0], nil] timePerFrame:0];
+        [self.winBlock runAction:[SKAction repeatAction:action count:1]];
     }
-
+    
     return self;
 }
 
--(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    /* Called when a touch begins */
-    
-    for (UITouch *touch in touches) {
-        CGPoint location = [touch locationInNode:self];
+- (void)rightSwipeRecognized:(UISwipeGestureRecognizer *)swipeRecognizer{
+    int i, j;
+    Bloco *vazio = nil;
+    NSLog(@"Right");
+    for(i = 0; i < 4; i++){
+        for(j = 0; j < 4; j++){
+            if([[[self.gridX objectAtIndex:i]objectAtIndex:j] typeIdentifier] == 0){
+                vazio = [[self.gridX objectAtIndex:i]objectAtIndex:j];
+                break;
+            }
+        }
+        
+        if(j < 4 && [[[self.gridX objectAtIndex:i]objectAtIndex:j] typeIdentifier] == 0){
+            break;
+        }
     }
+    
+    if(i == 0 || vazio == nil)
+        return;
+    
+    Bloco *block = [[self.gridX objectAtIndex:i-1]objectAtIndex:j];
+    
+    vazio.image.position = block.image.position;
+    
+    SKAction *moveRight = [SKAction moveToX:X0+((i-1)*(SCALE * XDist)+((i-1)*2)) duration:0.25];
+    [block.image runAction:moveRight];
+    
+    [[self.gridX objectAtIndex:i]replaceObjectAtIndex:j withObject:block];
+    [[self.gridX objectAtIndex:i-1]replaceObjectAtIndex:j withObject:vazio];
+    
+    block.BlockX += 1;
+    vazio.BlockX -= 1;
+    
+    [self startSpread];
+    [self showLights];
+    [self checkWin];
+}
+
+- (void)leftSwipeRecognized:(UISwipeGestureRecognizer *)swipeRecognizer{
+    int i, j;
+    Bloco *vazio = nil;
+    NSLog(@"Left");
+    for(i = 0; i < 4; i++){
+        for(j = 0; j < 4; j++){
+            if([[[self.gridX objectAtIndex:i]objectAtIndex:j] typeIdentifier] == 0){
+                vazio = [[self.gridX objectAtIndex:i]objectAtIndex:j];
+                break;
+            }
+        }
+        
+        if(j < 4 && [[[self.gridX objectAtIndex:i]objectAtIndex:j] typeIdentifier] == 0){
+            break;
+        }
+    }
+    
+    if(i == 3 || vazio == nil)
+        return;
+    
+    Bloco *block = [[self.gridX objectAtIndex:i+1]objectAtIndex:j];
+    
+    vazio.image.position = block.image.position;
+    
+    SKAction *moveLeft = [SKAction moveToX:X0+((i-1)*(SCALE * XDist)+((i-1)*2)) duration:0.25];
+    [block.image runAction:moveLeft];
+    
+    
+    block.BlockX -= 1;
+    vazio.BlockX += 1;
+    
+    [[self.gridX objectAtIndex:i]replaceObjectAtIndex:j withObject:block];
+    [[self.gridX objectAtIndex:i+1]replaceObjectAtIndex:j withObject:vazio];
+    
+    [self startSpread];
+    [self showLights];
+    [self checkWin];
+}
+
+- (void)upSwipeRecognized:(UISwipeGestureRecognizer *)swipeRecognizer{
+    int i, j;
+    Bloco *vazio = nil;
+    NSLog(@"Up");
+    for(i = 0; i < 4; i++){
+        for(j = 0; j < 4; j++){
+            if([[[self.gridX objectAtIndex:i]objectAtIndex:j] typeIdentifier] == 0){
+                vazio = [[self.gridX objectAtIndex:i]objectAtIndex:j];
+                break;
+            }
+        }
+        
+        if(j < 4 && [[[self.gridX objectAtIndex:i]objectAtIndex:j] typeIdentifier] == 0){
+            break;
+        }
+    }
+    
+    if(j == 3 || vazio == nil)
+        return;
+    
+    Bloco *block = [[self.gridX objectAtIndex:i]objectAtIndex:j+1];
+    
+    vazio.image.position = block.image.position;
+    
+    SKAction *moveUp = [SKAction moveToY:Y0+((3-j)*(SCALE * YDist)+((3-j)*2)) duration:0.25];
+    [block.image runAction:moveUp];
+    
+    [[self.gridX objectAtIndex:i]replaceObjectAtIndex:j withObject:block];
+    [[self.gridX objectAtIndex:i]replaceObjectAtIndex:j+1 withObject:vazio];
+    
+    block.BlockY -= 1;
+    vazio.BlockY += 1;
+    
+    [self startSpread];
+    [self showLights];
+    [self checkWin];
+}
+
+- (void)downSwipeRecognized:(UISwipeGestureRecognizer *)swipeRecognizer{
+    int i, j;
+    Bloco *vazio = nil;
+    NSLog(@"Down");
+    for(i = 0; i < 4; i++){
+        for(j = 0; j < 4; j++){
+            if([[[self.gridX objectAtIndex:i]objectAtIndex:j] typeIdentifier] == 0){
+                vazio = [[self.gridX objectAtIndex:i]objectAtIndex:j];
+                break;
+            }
+        }
+        
+        if(j < 4 && [[[self.gridX objectAtIndex:i]objectAtIndex:j] typeIdentifier] == 0){
+            break;
+        }
+    }
+    
+    if(j == 0 || vazio == nil)
+        return;
+    
+    Bloco *block = [[self.gridX objectAtIndex:i]objectAtIndex:j-1];
+    
+    vazio.image.position = block.image.position;
+    
+    SKAction *moveDown = [SKAction moveToY:Y0+((3-j)*(SCALE * YDist)+((3-j)*2)) duration:0.25];
+    [block.image runAction:moveDown];
+    
+    [[self.gridX objectAtIndex:i]replaceObjectAtIndex:j withObject:block];
+    [[self.gridX objectAtIndex:i]replaceObjectAtIndex:j-1 withObject:vazio];
+    
+    block.BlockY += 1;
+    vazio.BlockY -= 1;
+    
+    [self startSpread];
+    [self showLights];
+    [self checkWin];
 }
 
 -(void)update:(CFTimeInterval)currentTime {
@@ -111,10 +277,69 @@
             [temp removeLastObject];
         }
     }
+    
+    
+    if(startBlue >= 0){
+        SKSpriteNode* blueBegin = [SKSpriteNode spriteNodeWithImageNamed:@"Start On.png"];
+        
+        [blueBegin setSize:CGSizeMake(XDist * SCALE, YDist * SCALE)];
+        
+        [blueBegin setPosition:CGPointMake((138), Y0+((3- startBlue)*(SCALE * YDist)+((3-startBlue)*2)))];
+        
+        [self addChild:blueBegin];
+    }
+    if(startRed >= 0){
+        SKSpriteNode* redBegin = [SKSpriteNode spriteNodeWithImageNamed:@"Start On Red.png"];
+        
+        [redBegin setSize:CGSizeMake(XDist * SCALE, YDist * SCALE)];
+        
+        [redBegin setPosition:CGPointMake((138), Y0+((3- startRed)*(SCALE * YDist)+((3-startRed)*2)))];
+        
+        [self addChild:redBegin];
+    }
+    
+    self.winFrames = [self loadSpriteSheetFromImageWithName:@"EndSprite.png" withNumberOfSprites:4 withNumberOfRows:2 withNumberOfSpritesPerRow:2];
+    self.winBlock = [SKSpriteNode spriteNodeWithImageNamed:@"EndSprite.png"];
+    //SKAction *action = [SKAction animateWithTextures:self.winFrames timePerFrame:0];
+    //[self.winBlock runAction:[SKAction repeatActionForever:action]];
+    
+    [self.winBlock setSize:CGSizeMake(XDist * SCALE, YDist * SCALE)];
+    
+    [self.winBlock setPosition:CGPointMake((648), Y0+((3- self.winGrid)*(SCALE * YDist)+((3-self.winGrid)*2)))];
+    
+    [self addChild:self.winBlock];
+    
 }
 
 //Lógica do jogo
+
+-(void)checkWin{
+    Bloco *temp = [[self.gridX objectAtIndex:3] objectAtIndex:self.winGrid];
+    if(temp.right == TRUE)
+        NSLog(@"grid has exit at right");
+    if (temp.on == self.winLight){
+        
+        
+        
+        SKAction* action = [SKAction animateWithTextures:[NSArray arrayWithObjects:[self.winFrames objectAtIndex:0], [self.winFrames objectAtIndex:self.winLight], nil] timePerFrame:0];
+        [self.winBlock runAction:[SKAction repeatAction:action count:1]];
+        
+        NSLog(@"GG WP");
+    }
+}
+
+
+
 -(void)startSpread{
+    for(int i = 0; i < 4; i++)
+        for(int j = 0; j < 4; j++){
+            
+            Bloco *x = [[self.gridX objectAtIndex:i] objectAtIndex:j];
+            x.on = 0;
+            x.LightHierarchy = 0;
+        }
+    
+    
     Bloco *temp;
     if(startBlue >= 0){
         temp = [[self.gridX objectAtIndex:0] objectAtIndex:startBlue];
@@ -127,43 +352,7 @@
     temp = nil;
 }
 
--(void)spreadLight:(Bloco*) target{
-    target.on = TRUE;
-    
-    if(target.up == TRUE && target.BlockY > 0){
-        Bloco *up = [[self.gridX objectAtIndex:target.BlockX] objectAtIndex:target.BlockY - 1];
-        if(up.down == TRUE && up.on == FALSE)
-            [self spreadLight:up];
-    }
-    
-    if(target.down == TRUE && target.BlockY < 3){
-        Bloco *down = [[self.gridX objectAtIndex:target.BlockX] objectAtIndex:target.BlockY + 1];
-        if(down.up == TRUE && down.on == FALSE)
-            [self spreadLight:down];
-    }
-    if(target.right == TRUE && target.BlockX < 3){
-        Bloco *right = [[self.gridX objectAtIndex:target.BlockX + 1] objectAtIndex:target.BlockY];
-        if(right.left == TRUE && right.on == FALSE)
-            [self spreadLight:right];
-    }
-    if(target.left == TRUE && target.BlockX > 0){
-        Bloco *left = [[self.gridX objectAtIndex:target.BlockX - 1] objectAtIndex:target.BlockY];
-        if(left.right == TRUE && left.on == FALSE)
-            [self spreadLight:left];
-    }
-    
-#warning implement winning condidtion -- Quando tiver final, nomear o grid necessário, checa abertura pra direita, e confere se venceu o jogo!
-    
-}
 
--(void)checkWin{
-    Bloco *temp = [[self.gridX objectAtIndex:3] objectAtIndex:self.winGrid];
-    if(temp.right == TRUE)
-        NSLog(@"grid has exit at right");
-    if (temp.on == self.winLight){
-        NSLog(@"GG WP");
-    }
-}
 
 -(void)spreadBlueLight:(Bloco*) target givenHierarchy:(int) hierarchy{
     
@@ -203,9 +392,6 @@
             if(left.LightHierarchy >= target.LightHierarchy || left.LightHierarchy == 0)
                 [self spreadBlueLight:left givenHierarchy:target.LightHierarchy];
     }
-    
-#warning implement winning condidtion -- Quando tiver final, nomear o grid necessário, checa abertura pra direita, e confere se venceu o jogo!
-    
 }
 
 
@@ -272,11 +458,7 @@
             if(left.LightHierarchy >= target.LightHierarchy || left.LightHierarchy == 0)
                 [self spreadRedLight:left givenHierarchy:target.LightHierarchy];
     }
-    
-#warning same as blue.
-    
 }
-
 
 
 
@@ -316,9 +498,51 @@
             if(left.LightHierarchy >= target.LightHierarchy || left.LightHierarchy == 0)
                 [self spreadPurpleLight:left givenHierarchy:target.LightHierarchy];
     }
+}
+
+
+
+-(void) showLights{
+    for(int i = 0; i < 4; i++)
+        for(int j = 0; j < 4; j++){
+            
+            Bloco *x = [[self.gridX objectAtIndex:i] objectAtIndex:j];
+            
+            if(x.typeIdentifier != 0){
+                
+                SKAction* action = [SKAction animateWithTextures:[NSArray arrayWithObjects:[x.imageFrames objectAtIndex:0], [x.imageFrames objectAtIndex:x.on], nil] timePerFrame:0];
+                [x.image runAction:[SKAction repeatAction:action count:1]];
+                
+            }
     
-#warning same as blue&red.
+            
+        }
     
+}
+
+// Adicionado especificamente para o sprite final
+
+-(NSMutableArray*)loadSpriteSheetFromImageWithName:(NSString*)name withNumberOfSprites:(int)numSprites withNumberOfRows:(int)numRows withNumberOfSpritesPerRow:(int)numSpritesPerRow {
+    
+    NSMutableArray* animationSheet = [NSMutableArray array];
+    
+    SKTexture* mainTexture = [SKTexture textureWithImageNamed:name];
+    
+    for(int j = numRows-1; j >= 0; j--) {
+        for(int i = 0; i < numSpritesPerRow; i++) {
+            SKTexture* part = [SKTexture textureWithRect:CGRectMake(i*(1.0f/numSpritesPerRow), j*(1.0f/numRows), 1.0f/numSpritesPerRow, 1.0f/numRows) inTexture:mainTexture];
+            
+            [animationSheet addObject:part];
+            
+            if(animationSheet.count == numSprites)
+                break;
+        }
+        
+        if(animationSheet.count == numSprites)
+            break;
+    }
+    
+    return animationSheet;
 }
 
 -(void)updateWithTimeSinceLastUpdate:(CFTimeInterval)timeSinceLastUpdate{

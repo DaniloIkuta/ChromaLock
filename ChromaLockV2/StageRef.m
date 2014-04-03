@@ -33,7 +33,7 @@
             [_stageConfig  addObject:[[Bloco alloc] initWithNumber:3]]; //X1Y3
             [_stageConfig  addObject:[[Bloco alloc] initWithNumber:9]]; //X1Y2
             [_stageConfig  addObject:[[Bloco alloc] initWithNumber:4]]; //X1Y1
-            [_stageConfig  addObject:[NSNumber numberWithInt:3]]; //endGrid
+            [_stageConfig  addObject:[NSNumber numberWithInt:2]]; //endGrid
             [_stageConfig  addObject:[NSNumber numberWithInt:1]]; //endColor
             [_stageConfig  addObject:[NSNumber numberWithInt:-1]]; //startRed
             [_stageConfig  addObject:[NSNumber numberWithInt:1]]; //startBlue

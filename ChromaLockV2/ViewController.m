@@ -21,8 +21,13 @@
     skView.showsNodeCount = YES;
     
     // Create and configure the scene.
-    SKScene * scene = [[MyScene alloc]initWithSize:skView.bounds.size withStage:self.stage];
+    MyScene * scene = [[MyScene alloc]initWithSize:skView.bounds.size withStage:self.stage];
     scene.scaleMode = SKSceneScaleModeAspectFill;
+    
+    [self.view addGestureRecognizer:scene.rightSwipe];
+    [self.view addGestureRecognizer:scene.leftSwipe];
+    [self.view addGestureRecognizer:scene.downSwipe];
+    [self.view addGestureRecognizer:scene.upSwipe];
     
     // Present the scene.
     [skView presentScene:scene];
