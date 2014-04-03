@@ -37,7 +37,7 @@
             [_stageConfig  addObject:[NSNumber numberWithInt:1]]; //endColor
             [_stageConfig  addObject:[NSNumber numberWithInt:-1]]; //startRed
             [_stageConfig  addObject:[NSNumber numberWithInt:1]]; //startBlue
-            //move number = 3
+            [_stageConfig  addObject:[NSNumber numberWithInt:3]]; //number of moves
             break;
         case 2:
             

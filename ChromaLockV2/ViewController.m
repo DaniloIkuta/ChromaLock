@@ -23,6 +23,7 @@
     // Create and configure the scene.
     MyScene * scene = [[MyScene alloc]initWithSize:skView.bounds.size withStage:self.stage];
     scene.scaleMode = SKSceneScaleModeAspectFill;
+    scene.vc = self;
     
     [self.view addGestureRecognizer:scene.rightSwipe];
     [self.view addGestureRecognizer:scene.leftSwipe];

@@ -40,6 +40,7 @@
 		BB3F7A5218E9E243004351F9 /* MainMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB3F7A5118E9E243004351F9 /* MainMenuViewController.m */; };
 		BB3F7A5518E9EBB6004351F9 /* Bloco.m in Sources */ = {isa = PBXBuildFile; fileRef = BB3F7A5418E9EBB6004351F9 /* Bloco.m */; };
 		BB9BC25A18EB5BF700FFB9E7 /* StageRef.m in Sources */ = {isa = PBXBuildFile; fileRef = BB9BC25918EB5BF700FFB9E7 /* StageRef.m */; };
+		C098C8D218ECA79F00D541FD /* Start On Red.png in Resources */ = {isa = PBXBuildFile; fileRef = C098C8D118ECA79F00D541FD /* Start On Red.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,6 +96,7 @@
 		BB3F7A5418E9EBB6004351F9 /* Bloco.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Bloco.m; sourceTree = "<group>"; };
 		BB9BC25818EB5BF700FFB9E7 /* StageRef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StageRef.h; sourceTree = "<group>"; };
 		BB9BC25918EB5BF700FFB9E7 /* StageRef.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StageRef.m; sourceTree = "<group>"; };
+		C098C8D118ECA79F00D541FD /* Start On Red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Start On Red.png"; path = "Images.xcassets/Start On Red.png"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -211,6 +213,7 @@
 				BB3F7A3318E9E060004351F9 /* BackgroundB.png */,
 				BB3F7A3418E9E060004351F9 /* Sprite */,
 				BB3F7A4118E9E060004351F9 /* Start On.png */,
+				C098C8D118ECA79F00D541FD /* Start On Red.png */,
 			);
 			name = Images;
 			path = ChromaLockV2;
@@ -313,6 +316,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				BB3F7A4D18E9E060004351F9 /* VertEsqSprite.png in Resources */,
+				C098C8D218ECA79F00D541FD /* Start On Red.png in Resources */,
 				BB3F7A4318E9E060004351F9 /* ALLSprite.png in Resources */,
 				BB3F7A4C18E9E060004351F9 /* VertDirSprite.png in Resources */,
 				BB3F7A4218E9E060004351F9 /* BackgroundB.png in Resources */,

@@ -20,8 +20,12 @@
                     </view>
                     <navigationItem key="navigationItem" id="pNX-0D-UI5"/>
                     <simulatedOrientationMetrics key="simulatedOrientationMetrics" orientation="landscapeRight"/>
+                    <connections>
+                        <segue destination="TOf-Zv-gV5" kind="unwind" identifier="unwindToMenu" unwindAction="unwindToMainMenu:" id="UHh-TF-tOI"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
+                <exit id="TOf-Zv-gV5" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
             <point key="canvasLocation" x="2241" y="-182"/>
         </scene>
@@ -64,7 +68,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
-                                    <segue destination="gd1-1X-ZNJ" kind="push" id="vKw-A4-8ey"/>
+                                    <segue destination="gd1-1X-ZNJ" kind="push" identifier="toCredits" id="vKw-A4-8ey"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DiE-cC-vSs">

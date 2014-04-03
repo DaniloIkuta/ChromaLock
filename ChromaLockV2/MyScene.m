@@ -13,6 +13,8 @@
 @implementation MyScene{
     int startBlue;
     int startRed;
+    int moveNumber;
+    SKLabelNode* movesRemaining;
 }
 
 -(id)initWithSize:(CGSize)size withStage:(int)stageNumber {
@@ -20,6 +22,7 @@
     if (self = [super initWithSize:size]) {
         /* Setup your scene here */
         self.stage = stageNumber;
+        
         
         self.background = [SKSpriteNode spriteNodeWithImageNamed:@"BackgroundB.png"];
         self.background.ZPosition = -15;
@@ -34,7 +37,20 @@
         //
         [self generateStage:self.stage];
         
+        SKLabelNode* movements = [[SKLabelNode alloc] initWithFontNamed:@"Chalkduster"];
+        movements.text = @"Movements Remaining: ";
+        movements.fontSize = 28;
+        movements.position = CGPointMake(250, 250);
+        movements.color = [UIColor whiteColor];
+        [self addChild:movements];
         
+        movesRemaining = [[SKLabelNode alloc] initWithFontNamed:@"Chalkduster"];
+        
+        movesRemaining.text = [[NSNumber numberWithInt:moveNumber] stringValue];
+        movesRemaining.fontSize =28;
+        movesRemaining.position = CGPointMake(500, 250);
+        movesRemaining.color = [UIColor whiteColor];
+        [self addChild:movesRemaining];
         
         
         for(int i = 0; i < 4; i++){
@@ -128,9 +144,7 @@
     block.BlockX += 1;
     vazio.BlockX -= 1;
     
-    [self startSpread];
-    [self showLights];
-    [self checkWin];
+    [self gestureDidMove];
 }
 
 - (void)leftSwipeRecognized:(UISwipeGestureRecognizer *)swipeRecognizer{
@@ -167,9 +181,7 @@
     [[self.gridX objectAtIndex:i]replaceObjectAtIndex:j withObject:block];
     [[self.gridX objectAtIndex:i+1]replaceObjectAtIndex:j withObject:vazio];
     
-    [self startSpread];
-    [self showLights];
-    [self checkWin];
+    [self gestureDidMove];
 }
 
 - (void)upSwipeRecognized:(UISwipeGestureRecognizer *)swipeRecognizer{
@@ -205,9 +217,7 @@
     block.BlockY -= 1;
     vazio.BlockY += 1;
     
-    [self startSpread];
-    [self showLights];
-    [self checkWin];
+    [self gestureDidMove];
 }
 
 - (void)downSwipeRecognized:(UISwipeGestureRecognizer *)swipeRecognizer{
@@ -243,6 +253,14 @@
     block.BlockY += 1;
     vazio.BlockY -= 1;
     
+    [self gestureDidMove];
+}
+
+
+-(void) gestureDidMove{
+    moveNumber --;
+    movesRemaining.text = [[NSNumber numberWithInt:moveNumber] stringValue];
+    
     [self startSpread];
     [self showLights];
     [self checkWin];
@@ -257,6 +275,8 @@
     NSMutableArray *temp = [[NSMutableArray alloc] init];
     StageRef *stageRef = [[StageRef alloc] init];
     temp = [stageRef getSettings: stageNumber];
+    moveNumber = [[temp lastObject] intValue];
+    [temp removeLastObject];
     startBlue = [[temp lastObject] intValue];
     [temp removeLastObject];
     startRed = [[temp lastObject] intValue];
@@ -315,19 +335,43 @@
 
 -(void)checkWin{
     Bloco *temp = [[self.gridX objectAtIndex:3] objectAtIndex:self.winGrid];
-    if(temp.right == TRUE)
-        NSLog(@"grid has exit at right");
-    if (temp.on == self.winLight){
+    
+    //if(temp.right == TRUE){
+        if (temp.on == self.winLight){
+            
+            SKAction* action = [SKAction animateWithTextures:[NSArray arrayWithObjects:[self.winFrames objectAtIndex:0], [self.winFrames objectAtIndex:self.winLight], nil] timePerFrame:0];
+            [self.winBlock runAction:[SKAction repeatAction:action count:1]];
+            
+            NSLog(@"GG WP");
+            self.win = TRUE;
+            
+            [self endGame];
+        }
         
+        else if(moveNumber == 0){
+            self.lose = TRUE;
+            [self endGame];
+        }
+    //}
+}
+
+-(void)endGame{
+    if(self.win == TRUE){
+        UIAlertView *winAlert = [[UIAlertView alloc]initWithTitle:@"Complete!" message:@"You Win!!!" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles: nil];
         
+        [winAlert show];
+    }
+    
+    else{
+        UIAlertView *loseAlert = [[UIAlertView alloc]initWithTitle:@"Game Over" message:@"Você perdeu o jogo!" delegate:self cancelButtonTitle:@"Ok" otherButtonTitles: nil];
         
-        SKAction* action = [SKAction animateWithTextures:[NSArray arrayWithObjects:[self.winFrames objectAtIndex:0], [self.winFrames objectAtIndex:self.winLight], nil] timePerFrame:0];
-        [self.winBlock runAction:[SKAction repeatAction:action count:1]];
-        
-        NSLog(@"GG WP");
+        [loseAlert show];
     }
 }
 
+-(void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex{
+    [self.vc performSegueWithIdentifier:@"unwindToMenu" sender:self.vc];
+}
 
 
 -(void)startSpread{

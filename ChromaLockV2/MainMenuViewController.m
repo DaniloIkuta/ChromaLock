@@ -52,8 +52,13 @@
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-    ViewController *vc = [segue destinationViewController];
-    vc.stage = self.selectedStage;
+    if([segue.identifier  isEqual: @"MenuToGame"]){
+        ViewController *vc = [segue destinationViewController];
+        vc.stage = self.selectedStage;
+    }
+}
+
+- (IBAction)unwindToMainMenu:(UIStoryboardSegue *)unwindSegue{
 }
 
 @end
