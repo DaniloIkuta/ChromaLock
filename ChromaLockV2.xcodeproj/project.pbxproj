@@ -39,6 +39,7 @@
 		BB3F7A4F18E9E060004351F9 /* Start On.png in Resources */ = {isa = PBXBuildFile; fileRef = BB3F7A4118E9E060004351F9 /* Start On.png */; };
 		BB3F7A5218E9E243004351F9 /* MainMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB3F7A5118E9E243004351F9 /* MainMenuViewController.m */; };
 		BB3F7A5518E9EBB6004351F9 /* Bloco.m in Sources */ = {isa = PBXBuildFile; fileRef = BB3F7A5418E9EBB6004351F9 /* Bloco.m */; };
+		BB64C99218F31AA70058762A /* Background.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BB64C99118F31AA70058762A /* Background.jpg */; };
 		BB9BC25A18EB5BF700FFB9E7 /* StageRef.m in Sources */ = {isa = PBXBuildFile; fileRef = BB9BC25918EB5BF700FFB9E7 /* StageRef.m */; };
 		C098C8D218ECA79F00D541FD /* Start On Red.png in Resources */ = {isa = PBXBuildFile; fileRef = C098C8D118ECA79F00D541FD /* Start On Red.png */; };
 		C0EBB69618EDF2FE00C7C026 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0EBB69518EDF2FE00C7C026 /* AVFoundation.framework */; };
@@ -97,6 +98,7 @@
 		BB3F7A5118E9E243004351F9 /* MainMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainMenuViewController.m; sourceTree = "<group>"; };
 		BB3F7A5318E9EBB6004351F9 /* Bloco.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bloco.h; sourceTree = "<group>"; };
 		BB3F7A5418E9EBB6004351F9 /* Bloco.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Bloco.m; sourceTree = "<group>"; };
+		BB64C99118F31AA70058762A /* Background.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = Background.jpg; path = Images.xcassets/Background.jpg; sourceTree = "<group>"; };
 		BB9BC25818EB5BF700FFB9E7 /* StageRef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StageRef.h; sourceTree = "<group>"; };
 		BB9BC25918EB5BF700FFB9E7 /* StageRef.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StageRef.m; sourceTree = "<group>"; };
 		C098C8D118ECA79F00D541FD /* Start On Red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Start On Red.png"; path = "Images.xcassets/Start On Red.png"; sourceTree = "<group>"; };
@@ -220,6 +222,7 @@
 		BB15998B18E61286007F7DEA /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				BB64C99118F31AA70058762A /* Background.jpg */,
 				BB3F7A3318E9E060004351F9 /* BackgroundB.png */,
 				BB3F7A3418E9E060004351F9 /* Sprite */,
 				BB3F7A4118E9E060004351F9 /* Start On.png */,
@@ -342,6 +345,7 @@
 				BB3F7A4718E9E060004351F9 /* CimaEsqSprite.png in Resources */,
 				BB3F7A4618E9E060004351F9 /* CimaDirSprite.png in Resources */,
 				BB15995C18E60B3F007F7DEA /* InfoPlist.strings in Resources */,
+				BB64C99218F31AA70058762A /* Background.jpg in Resources */,
 				BB15996F18E60B3F007F7DEA /* Images.xcassets in Resources */,
 				BB3F7A4A18E9E060004351F9 /* HorCimaSprite.png in Resources */,
 				BB15996518E60B3F007F7DEA /* Main.storyboard in Resources */,

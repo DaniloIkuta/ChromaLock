@@ -15,7 +15,7 @@
 @property BOOL down;
 @property BOOL right;
 @property BOOL left;
-@property BOOL on;
+@property int on;
 @property int BlockX;
 @property int BlockY;
 @property int typeIdentifier;

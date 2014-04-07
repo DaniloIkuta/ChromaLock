@@ -36,24 +36,18 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (IBAction)selectStage1:(id)sender {
-    self.selectedStage = 1;
-    [self performSegueWithIdentifier:@"MenuToGame" sender:self];
-}
-
-- (IBAction)selectStage2:(id)sender {
-    self.selectedStage = 2;
-    [self performSegueWithIdentifier:@"MenuToGame" sender:self];
-}
-
-- (IBAction)selectStage3:(id)sender {
-    self.selectedStage = 3;
+- (IBAction)selectStage:(id)sender {
+    if([sender tag] != 0)
+        self.selectedStage = [sender tag];
+    
     [self performSegueWithIdentifier:@"MenuToGame" sender:self];
 }
 
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-    ViewController *vc = [segue destinationViewController];
-    vc.stage = self.selectedStage;
+    if([segue.identifier  isEqual: @"MenuToGame"]){
+        ViewController *vc = [segue destinationViewController];
+        vc.stage = self.selectedStage;
+    }
 }
 
 - (IBAction)unwindToMainMenu:(UIStoryboardSegue *)unwindSegue{

@@ -46,7 +46,7 @@
 @property UISwipeGestureRecognizer *downSwipe;
 @property UISwipeGestureRecognizer *upSwipe;
 
-@property ViewController *vc;
+@property (nonatomic, weak) ViewController *vc;
 
 
 -(id)initWithSize:(CGSize)size withStage:(int)stageNumber;

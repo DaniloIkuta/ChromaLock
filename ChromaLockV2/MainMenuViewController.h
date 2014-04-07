@@ -12,8 +12,4 @@
 
 @property (nonatomic)int selectedStage;
 
-- (IBAction)selectStage1:(id)sender;
-- (IBAction)selectStage2:(id)sender;
-- (IBAction)selectStage3:(id)sender;
-
 @end
