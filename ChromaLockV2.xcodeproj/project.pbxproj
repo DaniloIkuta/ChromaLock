@@ -23,6 +23,9 @@
 		BB15997818E60B3F007F7DEA /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BB15995318E60B3F007F7DEA /* UIKit.framework */; };
 		BB15998018E60B3F007F7DEA /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = BB15997E18E60B3F007F7DEA /* InfoPlist.strings */; };
 		BB15998218E60B3F007F7DEA /* ChromaLockV2Tests.m in Sources */ = {isa = PBXBuildFile; fileRef = BB15998118E60B3F007F7DEA /* ChromaLockV2Tests.m */; };
+		BB31AC1E18F47A2100370883 /* icon_large.png in Resources */ = {isa = PBXBuildFile; fileRef = BB31AC1C18F47A2100370883 /* icon_large.png */; };
+		BB31AC1F18F47A2100370883 /* icon_standard.png in Resources */ = {isa = PBXBuildFile; fileRef = BB31AC1D18F47A2100370883 /* icon_standard.png */; };
+		BB31AC2518F47B4600370883 /* Background.png in Resources */ = {isa = PBXBuildFile; fileRef = BB31AC2418F47B4600370883 /* Background.png */; };
 		BB3F7A4218E9E060004351F9 /* BackgroundB.png in Resources */ = {isa = PBXBuildFile; fileRef = BB3F7A3318E9E060004351F9 /* BackgroundB.png */; };
 		BB3F7A4318E9E060004351F9 /* ALLSprite.png in Resources */ = {isa = PBXBuildFile; fileRef = BB3F7A3518E9E060004351F9 /* ALLSprite.png */; };
 		BB3F7A4418E9E060004351F9 /* BaixoDirSprite.png in Resources */ = {isa = PBXBuildFile; fileRef = BB3F7A3618E9E060004351F9 /* BaixoDirSprite.png */; };
@@ -39,7 +42,6 @@
 		BB3F7A4F18E9E060004351F9 /* Start On.png in Resources */ = {isa = PBXBuildFile; fileRef = BB3F7A4118E9E060004351F9 /* Start On.png */; };
 		BB3F7A5218E9E243004351F9 /* MainMenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BB3F7A5118E9E243004351F9 /* MainMenuViewController.m */; };
 		BB3F7A5518E9EBB6004351F9 /* Bloco.m in Sources */ = {isa = PBXBuildFile; fileRef = BB3F7A5418E9EBB6004351F9 /* Bloco.m */; };
-		BB64C99218F31AA70058762A /* Background.jpg in Resources */ = {isa = PBXBuildFile; fileRef = BB64C99118F31AA70058762A /* Background.jpg */; };
 		BB9BC25A18EB5BF700FFB9E7 /* StageRef.m in Sources */ = {isa = PBXBuildFile; fileRef = BB9BC25918EB5BF700FFB9E7 /* StageRef.m */; };
 		C098C8D218ECA79F00D541FD /* Start On Red.png in Resources */ = {isa = PBXBuildFile; fileRef = C098C8D118ECA79F00D541FD /* Start On Red.png */; };
 		C0EBB69618EDF2FE00C7C026 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C0EBB69518EDF2FE00C7C026 /* AVFoundation.framework */; };
@@ -80,6 +82,9 @@
 		BB15997D18E60B3F007F7DEA /* ChromaLockV2Tests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "ChromaLockV2Tests-Info.plist"; sourceTree = "<group>"; };
 		BB15997F18E60B3F007F7DEA /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		BB15998118E60B3F007F7DEA /* ChromaLockV2Tests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ChromaLockV2Tests.m; sourceTree = "<group>"; };
+		BB31AC1C18F47A2100370883 /* icon_large.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_large.png; path = Images.xcassets/icon_large.png; sourceTree = "<group>"; };
+		BB31AC1D18F47A2100370883 /* icon_standard.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = icon_standard.png; path = Images.xcassets/icon_standard.png; sourceTree = "<group>"; };
+		BB31AC2418F47B4600370883 /* Background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = Background.png; path = Images.xcassets/Background.png; sourceTree = "<group>"; };
 		BB3F7A3318E9E060004351F9 /* BackgroundB.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = BackgroundB.png; path = Images.xcassets/BackgroundB.png; sourceTree = "<group>"; };
 		BB3F7A3518E9E060004351F9 /* ALLSprite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ALLSprite.png; sourceTree = "<group>"; };
 		BB3F7A3618E9E060004351F9 /* BaixoDirSprite.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BaixoDirSprite.png; sourceTree = "<group>"; };
@@ -98,7 +103,6 @@
 		BB3F7A5118E9E243004351F9 /* MainMenuViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainMenuViewController.m; sourceTree = "<group>"; };
 		BB3F7A5318E9EBB6004351F9 /* Bloco.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bloco.h; sourceTree = "<group>"; };
 		BB3F7A5418E9EBB6004351F9 /* Bloco.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Bloco.m; sourceTree = "<group>"; };
-		BB64C99118F31AA70058762A /* Background.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; name = Background.jpg; path = Images.xcassets/Background.jpg; sourceTree = "<group>"; };
 		BB9BC25818EB5BF700FFB9E7 /* StageRef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StageRef.h; sourceTree = "<group>"; };
 		BB9BC25918EB5BF700FFB9E7 /* StageRef.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StageRef.m; sourceTree = "<group>"; };
 		C098C8D118ECA79F00D541FD /* Start On Red.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = "Start On Red.png"; path = "Images.xcassets/Start On Red.png"; sourceTree = "<group>"; };
@@ -222,7 +226,9 @@
 		BB15998B18E61286007F7DEA /* Images */ = {
 			isa = PBXGroup;
 			children = (
-				BB64C99118F31AA70058762A /* Background.jpg */,
+				BB31AC2418F47B4600370883 /* Background.png */,
+				BB31AC1C18F47A2100370883 /* icon_large.png */,
+				BB31AC1D18F47A2100370883 /* icon_standard.png */,
 				BB3F7A3318E9E060004351F9 /* BackgroundB.png */,
 				BB3F7A3418E9E060004351F9 /* Sprite */,
 				BB3F7A4118E9E060004351F9 /* Start On.png */,
@@ -334,6 +340,7 @@
 				BB3F7A4318E9E060004351F9 /* ALLSprite.png in Resources */,
 				BB3F7A4C18E9E060004351F9 /* VertDirSprite.png in Resources */,
 				BB3F7A4218E9E060004351F9 /* BackgroundB.png in Resources */,
+				BB31AC1E18F47A2100370883 /* icon_large.png in Resources */,
 				BB3F7A4818E9E060004351F9 /* EndSprite.png in Resources */,
 				BB3F7A4F18E9E060004351F9 /* Start On.png in Resources */,
 				C0EBB69A18EDF46100C7C026 /* unlockPlus.mp3 in Resources */,
@@ -342,10 +349,11 @@
 				BB3F7A4918E9E060004351F9 /* HorBaixoSprite.png in Resources */,
 				BB3F7A4518E9E060004351F9 /* BaixoEsqSprite.png in Resources */,
 				BB3F7A4418E9E060004351F9 /* BaixoDirSprite.png in Resources */,
+				BB31AC1F18F47A2100370883 /* icon_standard.png in Resources */,
 				BB3F7A4718E9E060004351F9 /* CimaEsqSprite.png in Resources */,
 				BB3F7A4618E9E060004351F9 /* CimaDirSprite.png in Resources */,
+				BB31AC2518F47B4600370883 /* Background.png in Resources */,
 				BB15995C18E60B3F007F7DEA /* InfoPlist.strings in Resources */,
-				BB64C99218F31AA70058762A /* Background.jpg in Resources */,
 				BB15996F18E60B3F007F7DEA /* Images.xcassets in Resources */,
 				BB3F7A4A18E9E060004351F9 /* HorCimaSprite.png in Resources */,
 				BB15996518E60B3F007F7DEA /* Main.storyboard in Resources */,
